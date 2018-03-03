@@ -1,9 +1,15 @@
 package org.wecancodeit.reviewsitefullstack;
 
+import static java.util.Arrays.asList;
+
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,13 +27,17 @@ public class Review {
 	@ManyToOne
 	private Category category;
 
+	@ManyToMany
+	private Collection<Tag> tags;
+
 	public Review() {
 	}
 
-	public Review(String name, String description, Category category) {
+	public Review(String name, String description, Category category, Tag...tags) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
+		this.tags=new HashSet<>(asList(tags)); 
 	}
 
 	public String getName() {
@@ -45,6 +55,10 @@ public class Review {
 
 	public Category getCategory() {
 		return category;
+	}
+	
+	public Collection<Tag> getTags() {
+		return tags;
 	}
 
 	@Override

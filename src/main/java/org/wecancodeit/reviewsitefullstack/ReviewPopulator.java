@@ -14,6 +14,9 @@ public class ReviewPopulator implements CommandLineRunner {
 	@Resource
 	ReviewRepository reviewRepo;
 	
+	@Resource
+	TagRepository tagRepo;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -29,7 +32,13 @@ public class ReviewPopulator implements CommandLineRunner {
 		Category categoryMix = new Category("Mix");
 		categoryMix = catRepo.save(categoryMix);
 		
-		Review reviewYoga1 = new Review("Yoga1", "Great time", categoryYoga);
+		Tag tag1 = new Tag("tag1");
+		tag1 = tagRepo.save(tag1);
+		
+		Tag tag2 = new Tag("tag2");
+		tag2 = tagRepo.save(tag2);
+		
+		Review reviewYoga1 = new Review("Yoga1", "Great time", categoryYoga, tag1, tag2);
 		reviewYoga1 = reviewRepo.save(reviewYoga1);
 		
 		Review reviewYoga2 = new Review("Yoga2", "excellent", categoryYoga);

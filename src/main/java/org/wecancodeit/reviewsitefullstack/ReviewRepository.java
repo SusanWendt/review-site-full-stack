@@ -9,5 +9,7 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 	public Collection<Review> findByCategoryId(long categoryId);
 
 	public Collection<Review> findByCategory(Category category);
+	
+	public Collection<Review> findByTagsContains(Tag tag);
 
 }

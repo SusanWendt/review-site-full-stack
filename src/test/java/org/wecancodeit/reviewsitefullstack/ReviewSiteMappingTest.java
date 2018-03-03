@@ -1,5 +1,6 @@
 package org.wecancodeit.reviewsitefullstack;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -26,6 +27,9 @@ public class ReviewSiteMappingTest {
 
 	@Resource
 	private ReviewRepository reviewRepo;
+
+	@Resource
+	private TagRepository tagRepo;
 
 	@Test
 	public void shouldSaveAndLoadCategory() {
@@ -128,6 +132,57 @@ public class ReviewSiteMappingTest {
 		categoryUnderTest = catRepo.findOne(categoryIdUnderTest);
 		Collection<Review> reviewsForCategoryId = reviewRepo.findByCategoryId(categoryIdUnderTest);
 		assertThat(reviewsForCategoryId, containsInAnyOrder(reviewUnderTest, reviewUnderTest2, reviewUnderTest3));
+	}
+	
+	@Test
+	public void saveAndLoadTags() {
+		Tag tagUnderTest = new Tag("TagWord");
+		tagUnderTest = tagRepo.save(tagUnderTest);
+		long tagId = tagUnderTest.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		tagUnderTest = tagRepo.findOne(tagId);
+		assertThat(tagUnderTest.getTagWord(), is("TagWord"));
+	}
+	
+	@Test
+	public void shouldSaveAndLoadTagsWithinReviews() {
+		Tag tagUnderTest = new Tag("TagWord");
+		tagUnderTest = tagRepo.save(tagUnderTest);
+		Tag tagUnderTest2 = new Tag("TagWord");
+		tagUnderTest2 = tagRepo.save(tagUnderTest2);
+		Category category = new Category("CategoryType");
+		category = catRepo.save(category);
+		Review reviewUnderTest = new Review("Review One", "description", category, tagUnderTest, tagUnderTest2);
+		reviewUnderTest = reviewRepo.save(reviewUnderTest);
+		long reviewId = reviewUnderTest.getId(); 
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		reviewUnderTest = reviewRepo.findOne(reviewId);
+		assertThat(reviewUnderTest.getTags(), containsInAnyOrder(tagUnderTest, tagUnderTest2));
+	}
+	
+	@Test
+	public void ShouldCallTagWithinReview() {
+		Category category = new Category("Cat Name");
+		category = catRepo.save(category);
+		Tag tag = new Tag("tag");
+		tag = tagRepo.save(tag);
+		Tag tag2 = new Tag("tag2");
+		tag2 = tagRepo.save(tag2);
+		Review review = new Review("review", "description", category, tag, tag2);
+		review = reviewRepo.save(review);
+		long reviewId = review.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		review = reviewRepo.findOne(reviewId);
+		assertThat(review.getTags(), contains(tag, tag2));
 	}
 
 }
