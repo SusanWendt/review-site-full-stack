@@ -27,8 +27,15 @@ public class ReviewController {
 		Category category = catRepo.findOne(id);
 		model.addAttribute("category", category); 
 		model.addAttribute("reviews", reviewRepo.findByCategory(category));
-		return "SingleCategoryView";
+		return "singleCategoryView";
 	}
 	
-	//TODO add review mvc link to template here
+	@RequestMapping("/review")
+	public String getSingleReview(@RequestParam Long id, Model model) {
+//		Category category = catRepo.findOne(id);
+//		model.addAttribute("category", category); 
+		model.addAttribute("review", reviewRepo.findOne(id));
+		return "reviewView";
+	}
+	
 }
