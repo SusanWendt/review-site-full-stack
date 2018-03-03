@@ -32,8 +32,8 @@ public class ReviewController {
 	
 	@RequestMapping("/review")
 	public String getSingleReview(@RequestParam Long id, Model model) {
-//		Category category = catRepo.findOne(id);
-//		model.addAttribute("category", category); 
+		Category category = catRepo.findOne(id);
+		model.addAttribute("category", category); 
 		model.addAttribute("review", reviewRepo.findOne(id));
 		return "reviewView";
 	}
