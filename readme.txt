@@ -1,7 +1,9 @@
 Reviews Site Full Stack Overview
 
 Description: 
-Return to your reviews site from the previous exercise (or create another).
+Project done at We Can Code IT referencing previous Review Site repository. This is my first full stack and pair programming project. 
+Uses Java, Spring, JPA, HTML, and CSS. 
+Reviewing work out studios around Columbuswith descriptions and tags all housed in a database.  
 
 Tasks
 	[X] Add the following dependencies to build.gradle (or use Spring Initializr to create a new build.gradle)
@@ -18,16 +20,16 @@ Tasks
 		[X] configures a JPA relationship to its associated category.
 		[X] allows for a description/content/body longer than 255 characters.
 
-	[] Update your view (templates/html/*css*) such that:
+	[NEED TO ADD CSS] Update your view (templates/html/*css*) such that:
 		[X] there is a page that lists review categories, each of which links to the (details) page for a specific category.
 		[X] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
 		[X] each review detail page has a link to the page for its category.
 
 Stretch Tasks
-	[] Tags
+	[NEED TO MAKE LINKS] Tags
 		[X] Create a Tag entity.
 		[X] Update Review so that it can have tags associated with it. (One review, many tags.)
-		[] Display tags on the review details page.
+		[X] Display tags on the review details page.
 		[] Create a page that displays links to all of the reviews associated with a given tag.
 
 Stretchier
