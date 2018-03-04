@@ -14,10 +14,7 @@ public class ReviewController {
 	private CategoryRepository catRepo;
 
 	@Resource
-	private ReviewRepository reviewRepo;
-	
-	@Resource
-	private TagRepository tagRepo;
+	private ReviewRepository reviewRepo;	
 	
 	@RequestMapping("/categories")
 	public String getAllCategories(Model model) {
@@ -39,14 +36,15 @@ public class ReviewController {
 		return "reviewView";
 	}
 
-	//not working
+	@Resource
+	private TagRepository tagRepo;
+	
 	@RequestMapping("/tags")
-	public String showAllTags(@RequestParam Long id, Model model) {
+	public String showAllTags(Long id, Model model) {
 		model.addAttribute("allTags", tagRepo.findAll());
 		return "tagsView";
 	}
 	
-	//somehow works 
 	@RequestMapping("/tag")
 	public String showSingleTag(@RequestParam Long id, Model model) {
 		model.addAttribute("currentTag", tagRepo.findOne(id));

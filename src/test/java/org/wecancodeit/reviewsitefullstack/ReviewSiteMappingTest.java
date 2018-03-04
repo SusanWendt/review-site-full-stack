@@ -33,7 +33,7 @@ public class ReviewSiteMappingTest {
 
 	@Test
 	public void shouldSaveAndLoadCategory() {
-		Category categoryUnderTest = new Category("Cat Type");
+		Category categoryUnderTest = new Category("Cat Type", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
 		long categoryId = categoryUnderTest.getId();
 
@@ -46,9 +46,9 @@ public class ReviewSiteMappingTest {
 
 	@Test
 	public void shouldSaveAndLoadReview() {
-		Category categoryUnderTest = new Category("CategoryType");
+		Category categoryUnderTest = new Category("CategoryType", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
-		Review reviewUnderTest = new Review("Review Name", "description", categoryUnderTest);
+		Review reviewUnderTest = new Review("Review Name", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
 		long reviewIdUnderTest = reviewUnderTest.getId();
 
@@ -61,9 +61,9 @@ public class ReviewSiteMappingTest {
 
 	@Test
 	public void ShouldCallCategoryWithinReviewClass() {
-		Category categoryUnderTest = new Category("Cat Type");
+		Category categoryUnderTest = new Category("Cat Type", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
-		Review reviewUnderTest = new Review("Review", "description", categoryUnderTest);
+		Review reviewUnderTest = new Review("Review", "description", null, null, null, categoryUnderTest, null);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
 		long reviewIdUnderTest = reviewUnderTest.getId();
 
@@ -76,13 +76,13 @@ public class ReviewSiteMappingTest {
 
 	@Test
 	public void CategoryShouldHaveMultipleReviews() {
-		Category categoryUnderTest = new Category("CategoryType");
+		Category categoryUnderTest = new Category("CategoryType", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
-		Review reviewUnderTest = new Review("Review One", "description", categoryUnderTest);
+		Review reviewUnderTest = new Review("Review One", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
-		Review reviewUnderTest2 = new Review("Review Two", "description", categoryUnderTest);
+		Review reviewUnderTest2 = new Review("Review Two", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest2 = reviewRepo.save(reviewUnderTest2);
-		Review reviewUnderTest3 = new Review("Review Three", "description", categoryUnderTest);
+		Review reviewUnderTest3 = new Review("Review Three", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest3 = reviewRepo.save(reviewUnderTest3);
 		long categoryIdUnderTest = categoryUnderTest.getId();
 
@@ -96,13 +96,13 @@ public class ReviewSiteMappingTest {
 
 	@Test
 	public void ShouldFindReviewsByCategory() {
-		Category categoryUnderTest = new Category("CategoryType");
+		Category categoryUnderTest = new Category("CategoryType", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
-		Review reviewUnderTest = new Review("Review One", "description", categoryUnderTest);
+		Review reviewUnderTest = new Review("Review One", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
-		Review reviewUnderTest2 = new Review("Review Two", "description", categoryUnderTest);
+		Review reviewUnderTest2 = new Review("Review Two", "description", null, null, null,  categoryUnderTest);
 		reviewUnderTest2 = reviewRepo.save(reviewUnderTest2);
-		Review reviewUnderTest3 = new Review("Review Three", "description", categoryUnderTest);
+		Review reviewUnderTest3 = new Review("Review Three", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest3 = reviewRepo.save(reviewUnderTest3);
 		long categoryIdUnderTest = categoryUnderTest.getId();
 
@@ -116,13 +116,13 @@ public class ReviewSiteMappingTest {
 
 	@Test
 	public void ShouldFindReviewsByCategoryId() {
-		Category categoryUnderTest = new Category("CategoryType");
+		Category categoryUnderTest = new Category("CategoryType", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
-		Review reviewUnderTest = new Review("Review One", "description", categoryUnderTest);
+		Review reviewUnderTest = new Review("Review One", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
-		Review reviewUnderTest2 = new Review("Review Two", "description", categoryUnderTest);
+		Review reviewUnderTest2 = new Review("Review Two", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest2 = reviewRepo.save(reviewUnderTest2);
-		Review reviewUnderTest3 = new Review("Review Three", "description", categoryUnderTest);
+		Review reviewUnderTest3 = new Review("Review Three", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest3 = reviewRepo.save(reviewUnderTest3);
 		long categoryIdUnderTest = categoryUnderTest.getId();
 
@@ -153,9 +153,9 @@ public class ReviewSiteMappingTest {
 		tagUnderTest = tagRepo.save(tagUnderTest);
 		Tag tagUnderTest2 = new Tag("TagWord");
 		tagUnderTest2 = tagRepo.save(tagUnderTest2);
-		Category category = new Category("CategoryType");
+		Category category = new Category("CategoryType", null, null);
 		category = catRepo.save(category);
-		Review reviewUnderTest = new Review("Review One", "description", category, tagUnderTest, tagUnderTest2);
+		Review reviewUnderTest = new Review("Review One", "description", null, null, null, category, tagUnderTest, tagUnderTest2);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
 		long reviewId = reviewUnderTest.getId(); 
 		
@@ -168,13 +168,13 @@ public class ReviewSiteMappingTest {
 	
 	@Test
 	public void ShouldCallTagWithinReview() {
-		Category category = new Category("Cat Name");
+		Category category = new Category("Cat Name", null, null);
 		category = catRepo.save(category);
 		Tag tag = new Tag("tag");
 		tag = tagRepo.save(tag);
 		Tag tag2 = new Tag("tag2");
 		tag2 = tagRepo.save(tag2);
-		Review review = new Review("review", "description", category, tag, tag2);
+		Review review = new Review("review", "description", null, null, null, category, tag, tag2);
 		review = reviewRepo.save(review);
 		long reviewId = review.getId();
 
