@@ -39,19 +39,30 @@ public class ReviewController {
 		return "reviewView";
 	}
 
-	//tag and tags
+	//not working
 	@RequestMapping("/tags")
 	public String showAllTags(@RequestParam Long id, Model model) {
-		model.addAttribute("tags", tagRepo.findAll());
+		model.addAttribute("allTags", tagRepo.findAll());
 		return "tagsView";
 	}
 	
-	//tag may not be right 
+	//somehow works 
 	@RequestMapping("/tag")
-	public String getSingleTag(@RequestParam Long id, Model model) {
-		Tag tag = tagRepo.findOne(id);
-		model.addAttribute("tag", tag);
-		model.addAttribute("review", reviewRepo.findByTagsContains(tag));
+	public String showSingleTag(@RequestParam Long id, Model model) {
+		model.addAttribute("currentTag", tagRepo.findOne(id));
 		return "tagView";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
