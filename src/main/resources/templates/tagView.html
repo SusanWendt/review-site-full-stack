@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Tag Page</title>
+</head>
+<body>
+	<h1 th:text="${tag.tagWord} + ' Tag'"></h1>
+		<h3>Reviews with this tag</h3>
+		<!-- <ul>
+			<li th:text= "${tagWord.review}"></li>
+		</ul>
+		
+	 NEED TO MAKE A LINK TO RETURN TO REVIEW 
+	<p><a th:href= "@{category(id=${review.category.id})}"
+	th:text= "'Return to ' + ${review.category.type} + ' Category'"></a></p> -->
+	<p><a href="/categories">Back to Home</a></p>
+</body>
+</html>

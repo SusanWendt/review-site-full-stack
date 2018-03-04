@@ -13,9 +13,14 @@
 		
 		<h3>Tags</h3>
 		<ul>
-			<li th:each= "tag : ${review.tags}" th:text= "${tag.tagWord}"> </li>
-			<!-- <li><a th:href= "@{review(id=$review.tags})}" th:each= "${review.tags}"></a></li>  NEED TO MAKE A LINK FOR EACH TAG AND TO A TAG.HTML PAGE-->
+			<li th:each= "tag : ${review.tags}" th:text= "${tag.tagWord}"> </li>		
 		</ul>
+	
+	<!--NEED TO MAKE A LINK FOR EACH TAG AND TO A TAG.HTML PAGE-->
+	<span th:each="tag: ${review.tags}">
+			<a href="tagView.html" th:href="@{tag(tagId=${tag.id})}" th:text="| ${tag.tagWord}|"></a>
+			<span> </span>
+		</span>
 	
 	<p><a th:href= "@{category(id=${review.category.id})}"
 	th:text= "'Return to ' + ${review.category.type} + ' Category'"></a></p>

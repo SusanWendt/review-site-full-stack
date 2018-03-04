@@ -16,6 +16,9 @@ public class ReviewController {
 	@Resource
 	private ReviewRepository reviewRepo;
 	
+	@Resource
+	private TagRepository tagRepo;
+	
 	@RequestMapping("/categories")
 	public String getAllCategories(Model model) {
 		model.addAttribute("categories", catRepo.findAll());
@@ -35,5 +38,20 @@ public class ReviewController {
 		model.addAttribute("review", reviewRepo.findOne(id));
 		return "reviewView";
 	}
+
+	//tag and tags
+	@RequestMapping("/tags")
+	public String showAllTags(@RequestParam Long id, Model model) {
+		model.addAttribute("tags", tagRepo.findAll());
+		return "tagsView";
+	}
 	
+	//tag may not be right 
+	@RequestMapping("/tag")
+	public String getSingleTag(@RequestParam Long id, Model model) {
+		Tag tag = tagRepo.findOne(id);
+		model.addAttribute("tag", tag);
+		model.addAttribute("review", reviewRepo.findByTagsContains(tag));
+		return "tagView";
+	}
 }

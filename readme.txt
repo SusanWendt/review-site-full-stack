@@ -2,8 +2,8 @@ Reviews Site Full Stack Overview
 
 Description: 
 Project done at We Can Code IT referencing previous Review Site repository. This is my first full stack and pair programming project. 
-Uses Java, Spring, JPA, HTML, and CSS. 
-Reviewing work out studios around Columbuswith descriptions and tags all housed in a database.  
+Uses Java, Spring Boot, Spring MVC, Spring Initialzr, JPA, SQL DataBase, as wellas Front End languages HTML, and CSS. 
+Reviewing work out studios around the city with descriptions and tags all housed in a database.  
 
 Tasks
 	[X] Add the following dependencies to build.gradle (or use Spring Initializr to create a new build.gradle)
@@ -35,6 +35,20 @@ Stretch Tasks
 Stretchier
 	[] Style your tags list template as a tag cloud, making tags which appear more often larger and/or bolder and those that appear less often smaller and/or lower weight.
 	[] Allow creation and deletion of tags from a review using <form> and <button> elements along with the appropriate controller method(s).
+
+Rubric
+[X/5] create and wire entity classes with proper annotations
+[X/5] create necessary repositories
+[X/10] create needed database with proper annotations
+[X/10] controller class setup to allow access to necessary templates
+[X/10] ThymeLeaf templates that accurately display required information
+[X/10] HTML semantically marked
+[X/10] CSS style according to convention
+[X/10] utilize CSS Grid layout according to conventional practice
+[X/10] utilize FlexBox according to conventional practice
+[X/10] TDD
+[X/10] style/formatting/code quality
+[X/100] total points
 
 Tips
 	Start with the known specifics

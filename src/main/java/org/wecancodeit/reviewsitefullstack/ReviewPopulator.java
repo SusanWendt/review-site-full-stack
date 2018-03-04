@@ -38,19 +38,25 @@ public class ReviewPopulator implements CommandLineRunner {
 		Tag tag2 = new Tag("tag2");
 		tag2 = tagRepo.save(tag2);
 		
+		Tag tag3 = new Tag("tag3");
+		tag3 = tagRepo.save(tag3);
+		
+		Tag tag4 = new Tag("tag4");
+		tag4 = tagRepo.save(tag4);
+		
 		Review reviewYoga1 = new Review("Yoga1", "Great time", categoryYoga, tag1, tag2);
 		reviewYoga1 = reviewRepo.save(reviewYoga1);
 		
-		Review reviewYoga2 = new Review("Yoga2", "excellent", categoryYoga);
+		Review reviewYoga2 = new Review("Yoga2", "excellent", categoryYoga, tag1);
 		reviewYoga2 = reviewRepo.save(reviewYoga2);
 		
-		Review reviewBarre1 = new Review("Barre1", "excellent", categoryBarre);
+		Review reviewBarre1 = new Review("Barre1", "excellent", categoryBarre, tag3, tag4);
 		reviewBarre1 = reviewRepo.save(reviewBarre1);
 		
-		Review reviewPilates1 = new Review("Pilates1", "excellent", categoryPilates);
+		Review reviewPilates1 = new Review("Pilates1", "excellent", categoryPilates, tag3);
 		reviewPilates1 = reviewRepo.save(reviewPilates1);
 		
-		Review reviewMix1 = new Review("mix1", "excellent", categoryMix);
+		Review reviewMix1 = new Review("mix1", "excellent", categoryMix, tag4, tag2);
 		reviewMix1 = reviewRepo.save(reviewMix1);
 	}
 }
