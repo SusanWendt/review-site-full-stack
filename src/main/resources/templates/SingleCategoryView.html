@@ -4,11 +4,17 @@
 <title>Category</title>
 </head>
 <body>
-<h1 th:text="'List of ' + ${category.type} + ' Reviews:'"></h1>
-<ul th:each= "review : ${reviews}">
-<li><a th:href= "@{review(id=${review.id})}"
-th:text= "${review.name}"></a></li>
-</ul>
+	<h1 th:text="'List of ' + ${category.type} + ' Reviews:'"></h1>
+		<img th:src="${category.imageUrl}" alt="I'm not pictured here" />
+
+		<h3>Description:</h3>
+		<p th:text="${category.description}"></p>
+
+	<ul th:each= "review : ${reviews}">
+		<li><a th:href= "@{review(id=${review.id})}"
+		th:text= "${review.name}"></a></li>
+	</ul>
+
 <p><a href="/categories">Back to Home</a></p>
 </body>
 </html>

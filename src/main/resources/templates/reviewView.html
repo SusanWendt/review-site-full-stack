@@ -6,10 +6,15 @@
 </head>
 <body>
 	<h1 th:text="${review.name} + ' Review'"></h1>
-		<h3>Description</h3>
-		<ul>
-			<li th:text= "${review.description}"></li>
-		</ul>
+
+		<img th:src="${review.imageUrl}" alt="I'm not pictured here" />
+
+		<a th:href="${review.website}"><h3 th:text="${review.name} + ' website'"></h3></a> 
+		
+		<a th:href="${review.insta}"><h3 th:text="${review.name} + ' Instagram'"></h3></a>
+
+		<h3>Description:</h3>
+		<p th:text="${review.description}"></p>
 		
 		<h3>Tags</h3>
 		<ul>

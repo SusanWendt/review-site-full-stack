@@ -21,8 +21,10 @@ public class Review {
 						// value are applied to private long and not private string field
 
 	private String name;
-
 	private String description;
+	private String imageUrl;
+	private String website;
+	private String insta;
 
 	@ManyToOne
 	private Category category;
@@ -33,11 +35,15 @@ public class Review {
 	public Review() {
 	}
 
-	public Review(String name, String description, Category category, Tag...tags) {
+	public Review(String name, String imageUrl, String website, String insta, String description, Category category,
+			Tag... tags) {
 		this.name = name;
 		this.description = description;
+		this.imageUrl = imageUrl;
+		this.website = website;
+		this.insta = insta;
 		this.category = category;
-		this.tags=new HashSet<>(asList(tags)); 
+		this.tags = new HashSet<>(asList(tags));
 	}
 
 	public String getName() {
@@ -48,6 +54,18 @@ public class Review {
 		return id;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public String getInsta() {
+		return insta;
+	}
+
 	@Lob
 	public String getDescription() {
 		return description;
@@ -56,7 +74,7 @@ public class Review {
 	public Category getCategory() {
 		return category;
 	}
-	
+
 	public Collection<Tag> getTags() {
 		return tags;
 	}

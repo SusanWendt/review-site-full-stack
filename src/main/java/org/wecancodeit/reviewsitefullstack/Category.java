@@ -18,13 +18,25 @@ public class Category {
 	private long id; //the annotations above apply directly to what follows so @Id and @Generated value are applied to private long and not private string field 
 	
 	private String type;
+	private String imageUrl;
+	private String description;
 
-	public Category(String type) {
+	public Category(String type, String description, String imageUrl) {
 		this.type = type;
+		this.description = description;
+		this.imageUrl = imageUrl;
 	}
 
 	public String getType() {
 		return type;
+	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 
 	public long getId() {

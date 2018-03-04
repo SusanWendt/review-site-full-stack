@@ -10,7 +10,7 @@ public class ClassTest {
 	@Test
 	public void ShouldSetUpReviewClass() {
 		Category category = new Category("CatType");
-		Review review = new Review("Name", "Description", category); 
+		Review review = new Review("Name", "image", "website", "insta", "Description", category); 
 		String check = review.getName();  
 		assertThat(check, is("Name")); 	
 	}

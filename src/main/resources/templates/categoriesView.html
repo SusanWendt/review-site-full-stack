@@ -4,10 +4,10 @@
 <title>Categories</title>
 </head>
 <body>
-<h1>List of Review Categories</h1>
-<ul th:each= "category : ${categories}">
-<li><a th:href= "@{category(id=${category.id})}"
-th:text= "${category.type}"></a></li>
-</ul>
+	<h1>List of Review Categories</h1>
+		<ul th:each= "category : ${categories}">
+			<li><a th:href= "@{category(id=${category.id})}"
+			th:text= "${category.type}"></a></li>
+		</ul>
 </body>
 </html>
