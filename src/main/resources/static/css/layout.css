@@ -1,0 +1,66 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	background-color: yellow; 
+	display: grid;
+	grid-template-rows: 200px auto 50px;
+	height: 100vh;
+}
+
+header {
+	display: grid;
+	grid-template-columns: .25fr .5fr .25fr;
+}
+
+.headertext {
+	display: flex;
+	justify-content: center;
+	align-self: center;
+}
+
+.categoriesList {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background-color: yellow;
+}
+
+.categoryInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2rem;
+	background-color: lavender;
+
+}
+
+.reviewInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2rem;
+	background-color: floralwhite;
+}
+
+ul {
+	list-style-type: none;
+}
+
+footer {
+	background-color:  #e7b1b1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#fitness {
+	height: 350px;
+	width: 400px;
+}

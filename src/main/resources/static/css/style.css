@@ -1,0 +1,22 @@
+.container {
+	font-family: 'Pacifico', serif;
+}
+
+.headertext, .categoriesList {
+	font-family: 'Sacramento', serif;
+	font-size: 40px;
+}
+
+.categoryInfo, .reviewInfo {
+	font-family: 'Pacifico', serif;
+}
+
+a:hover {
+	background-color: dimgray;  
+	text-decoration: none; 
+}
+
+header {
+	background: linear-gradient(to bottom, aliceblue, silver);
+
+}

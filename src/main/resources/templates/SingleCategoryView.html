@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Category</title>
-<link rel="stylesheet" href="./css/style.css" />
-<link rel="stylesheet" href="./css/layout.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/layout.css" />
+	<title>Category</title>
 </head>
 <body>
-	<h1 th:text="'List of ' + ${category.type} + ' Reviews:'"></h1>
-		<img th:src="${category.imageUrl}" alt="I'm not pictured here" />
+<div class="container">	
+		<header>
+			<img id="logo" src="./images/swlogo.png" alt = "no image found" /> 
+			<h1 class = "headertext" th:text="'List of ' + ${category.type} + ' Reviews:'"></h1>
+		</header>
+		
+		<section class="categoryInfo">
+			<img id = "fitness" th:src="${category.imageUrl}" alt="I'm not pictured here" />
+	
+			<h3>Description:</h3>
+			<p th:text="${category.description}"></p>
+			
+			<h3>List of Reviews in this Category:</h3>
+			<ul th:each= "review : ${reviews}">
+				<li><a th:href= "@{review(id=${review.id})}"
+				th:text= "${review.name}"></a></li>
+			</ul>
+		
+		</section>
+		<footer>
+			<p><a href="/categories">Back to Home</a></p>
+			<span class="Copyright">&copy;2018 Susan Wendt</span>
+		</footer>
+	</div> <!-- /.container -->
 
-		<h3>Description:</h3>
-		<p th:text="${category.description}"></p>
-
-	<ul th:each= "review : ${reviews}">
-		<li><a th:href= "@{review(id=${review.id})}"
-		th:text= "${review.name}"></a></li>
-	</ul>
-
-<p><a href="/categories">Back to Home</a></p>
 </body>
 </html>
