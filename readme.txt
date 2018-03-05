@@ -20,13 +20,13 @@ Tasks
 		[X] configures a JPA relationship to its associated category.
 		[X] allows for a description/content/body longer than 255 characters.
 
-	[NEED TO ADD CSS] Update your view (templates/html/*css*) such that:
+	[X] Update your view (templates/html/css) such that:
 		[X] there is a page that lists review categories, each of which links to the (details) page for a specific category.
 		[X] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
 		[X] each review detail page has a link to the page for its category.
 
 Stretch Tasks
-	[NEED TO MAKE LINKS] Tags
+	[] Tags
 		[X] Create a Tag entity.
 		[X] Update Review so that it can have tags associated with it. (One review, many tags.)
 		[X] Display tags on the review details page.
