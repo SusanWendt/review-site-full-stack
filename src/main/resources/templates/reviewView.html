@@ -19,21 +19,27 @@
 		</header>
 
 		<section class="reviewInfo">
-			<img th:src="${review.imageUrl}" alt="I'm not pictured here" />
-
-			<a th:href="${review.website}"><h3 th:text="${review.name} + ' website'"></h3></a> 
+			<article>
+				<h3>Description:</h3>
+				<p th:text="${review.description}"></p>
+			</article>
 			
-			<a th:href="${review.insta}"><h3 th:text="${review.name} + ' Instagram'"></h3></a>
+			<img th:src="${review.imageUrl}" alt="I'm not pictured here" />
+			
+			<article>
+				<h3>Links:</h3>
+				<a th:href="${review.website}"><h3 th:text="${review.name} + ' website'"></h3></a> 
+				<a th:href="${review.insta}"><h3 th:text="${review.name} + ' Instagram'"></h3></a>
+			</article>
 
-			<h3>Description:</h3>
-			<p th:text="${review.description}"></p>
-		
-		<h3>Tags Link</h3>
-			<span th:each="tag: ${review.tags}">
-				<a href="tagView.html" th:href="@{tag(id=${tag.id})}" 
-				th:text="| ${tag.tagWord}|"></a>
-				<span> </span>
-			</span>
+			<article>
+				<h3>Tags:</h3>
+				<span th:each="tag: ${review.tags}">
+					<a href="/tagView" th:href="@{tag(id=${tag.id})}" 
+					th:text="${tag.tagWord}"></a>
+					<span> </span>
+				</span>
+			</article>
 		</section>
 		
 		<footer>
