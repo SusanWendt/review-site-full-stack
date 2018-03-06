@@ -5,13 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="./css/style.css" />
 	<link rel="stylesheet" href="./css/layout.css" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo|Pacifico" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Alice|Sacramento" rel="stylesheet" />
 	<title>Category</title>
 </head>
 <body>
 <div class="container">	
 		<header>
 			<img id="logo" src="./images/swlogo.png" alt = "no image found" /> 
-			<h1 class = "headertext" th:text="'List of ' + ${category.type} + ' Reviews:'"></h1>
+			<h1 class = "headertext" th:text="${category.type} + ' Reviews:'"></h1>
 		</header>
 		
 		<section class="categoryInfo">
@@ -28,8 +30,8 @@
 		
 		</section>
 		<footer>
-			<p><a href="/categories">Back to Home</a></p>
 			<span class="Copyright">&copy;2018 Susan Wendt</span>
+			<p><a href="/categories">Back to Home</a></p>
 		</footer>
 	</div> <!-- /.container -->
 

@@ -2,18 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Tag Page</title>
+<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/layout.css" />
+	<link href="https://fonts.googleapis.com/css?family=Arimo|Pacifico" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Alice|Sacramento" rel="stylesheet" />
+	<title>Tag Page</title>
 </head>
+
 <body>
-	<h1>Tag Page</h1>
-		<h3>Reviews with this tag</h3>
-		<!-- <ul>
-			<li th:text= "${tagWord.review}"></li>
-		</ul>
-		
-	 NEED TO MAKE A LINK TO RETURN TO REVIEW 
-	<p><a th:href= "@{category(id=${review.category.id})}"
-	th:text= "'Return to ' + ${review.category.type} + ' Category'"></a></p> -->
-	<p><a href="/categories">Back to Home</a></p>
+	<div class="container">	
+		<header>
+			<img id="logo" src="./images/swlogo.png" alt = "no image found" /> 
+			<h1 class="headertext" th:text="${currentTag.tagWord} + ' Tag'"></h1>
+		</header>
+			
+			<article>
+				<h3>Reviews with this tag</h3>
+				<ul th:each="element: ${currentTag.reviews}">
+					<li><a href="/reviewView" th:href="@{review(id=${element.id})}" th:text="${element.name}"></a>
+					<span th:text="${element.description}"></span></li>
+				</ul>
+			</article>
+				
+		<footer>
+			<span class="Copyright">&copy;2018 Susan Wendt</span>
+			<a href="/tags">See All Tags</a>
+			<a href="/categories">Back to Home</a>
+		</footer>
+	</div> <!-- /.container -->
 </body>
 </html>

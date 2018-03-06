@@ -1,14 +1,19 @@
 .container {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.headertext {
+	font-size: 40px;
 	font-family: 'Pacifico', serif;
 }
 
-.headertext, .categoriesList {
+.categoriesList {
 	font-family: 'Sacramento', serif;
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .categoryInfo, .reviewInfo {
-	font-family: 'Pacifico', serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 a:hover {
@@ -18,5 +23,9 @@ a:hover {
 
 header {
 	background: linear-gradient(to bottom, aliceblue, silver);
+}
 
+footer {
+	font-family: Verdana, Geneva, sans-serif; 
+	
 }

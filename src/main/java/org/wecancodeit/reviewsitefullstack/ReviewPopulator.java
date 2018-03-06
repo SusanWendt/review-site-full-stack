@@ -35,17 +35,17 @@ public class ReviewPopulator implements CommandLineRunner {
 		categoryMix = catRepo.save(categoryMix);
 
 		// tags
-		Tag tag1 = new Tag("tag1");
-		tag1 = tagRepo.save(tag1);
+		Tag highCost = new Tag("High Cost");
+		highCost = tagRepo.save(highCost);
 
-		Tag tag2 = new Tag("tag2");
-		tag2 = tagRepo.save(tag2);
+		Tag lowCost = new Tag("lowCost");
+		lowCost = tagRepo.save(lowCost);
 
-		Tag tag3 = new Tag("tag3");
-		tag3 = tagRepo.save(tag3);
+		Tag hiit = new Tag("High Intensity Interval Training");
+		hiit = tagRepo.save(hiit);
 
-		Tag tag4 = new Tag("tag4");
-		tag4 = tagRepo.save(tag4);
+		Tag lowImpact = new Tag("Low Impact");
+		lowImpact = tagRepo.save(lowImpact);
 
 		// reviews
 
@@ -54,27 +54,27 @@ public class ReviewPopulator implements CommandLineRunner {
 				"This yoga studio is where I did my teacher training. "
 						+ "It has three different locations and is the most comprehensive studio in Columbus, "
 						+ "offering Vinyasa, Hatha, Ashtanga, Mysore, Restorative, Maternity, Kids yoga, free community yoga, and many more.",
-				categoryYoga, tag1);
+				categoryYoga, lowImpact, highCost);
 		yohi = reviewRepo.save(yohi);
 
 		Review corePower = new Review("CorePower Yoga", "./images/corePower.jpg", "https://www.corepoweryoga.com/",
-				"https://www.instagram.com/corepoweryoga/", "Description", categoryYoga, tag4);
+				"https://www.instagram.com/corepoweryoga/", "Description", categoryYoga, lowImpact, hiit, highCost);
 		corePower = reviewRepo.save(corePower);
 
 		Review barreThree = new Review("Barre3", "./images/barre3.png", "https://barre3.com/",
 				"https://www.instagram.com/barre3/",
 				"Barre3 incorporates cardio and weights throughout the workout to give you a total body workout. ",
-				categoryBarre, tag2);
+				categoryBarre, hiit, highCost);
 		barreThree = reviewRepo.save(barreThree);
 
 		Review butcherShop = new Review("The ButcherShop Fitness", "./images/lagree.jpg",
 				"https://www.butchershopfitness.com/", "https://www.instagram.com/lagreefitness/",
-				"Similar to barre, this workout targets muscles you've never worked before.", categoryPilates, tag3);
+				"Similar to barre, this workout targets muscles you've never worked before.", categoryPilates, highCost);
 		butcherShop = reviewRepo.save(butcherShop);
 
 		Review sos = new Review("System of Strength", "./images/sos.jpg", "https://systemofstrength.com/",
 				"https://www.instagram.com/systemofstrength/", "Various workout classes that range from HIIT to Yoga.", categoryMix,
-				tag4);
+				highCost);
 		sos = reviewRepo.save(sos);
 
 	}

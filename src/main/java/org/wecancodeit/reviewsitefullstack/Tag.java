@@ -1,6 +1,8 @@
 package org.wecancodeit.reviewsitefullstack;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,24 +16,29 @@ public class Tag {
 	private long id;
 	
 	private String tagWord;
+		
+	@ManyToMany (mappedBy="tags")
+	private Collection<Review> reviews;
 	
 	public Tag() {
 	}
 
-	public Tag(String tagWord) {
+	public Tag(String tagWord, Review...reviews) {
 		this.tagWord=tagWord;
+		this.reviews= new HashSet<>(Arrays.asList(reviews));
+	}
+	
+	public long getId() {
+		return id;
 	}
 
 	public String getTagWord() {
 		return tagWord;
 	}
-
-	public long getId() {
-		return id;
-	}
 	
-	@ManyToMany (mappedBy="tags")
-	private Collection<Review> reviews;
+	public Collection<Review> getReviews() {
+		return reviews;
+	}
 	
 	@Override
 	public int hashCode() {
