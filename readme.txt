@@ -26,11 +26,11 @@ Tasks
 		[X] each review detail page has a link to the page for its category.
 
 Stretch Tasks
-	[] Tags
+	[X] Tags
 		[X] Create a Tag entity.
 		[X] Update Review so that it can have tags associated with it. (One review, many tags.)
 		[X] Display tags on the review details page.
-		[] Create a page that displays links to all of the reviews associated with a given tag.
+		[X] Create a page that displays links to all of the reviews associated with a given tag.
 
 Stretchier
 	[] Style your tags list template as a tag cloud, making tags which appear more often larger and/or bolder and those that appear less often smaller and/or lower weight.
