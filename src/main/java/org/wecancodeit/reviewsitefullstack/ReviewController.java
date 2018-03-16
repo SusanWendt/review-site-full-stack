@@ -1,7 +1,10 @@
 package org.wecancodeit.reviewsitefullstack;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +41,9 @@ public class ReviewController {
 
 	@Resource
 	private TagRepository tagRepo;
+
+	@Resource
+	private CommentRepository commentRepo;
 	
 	@RequestMapping("/tags")
 	public String showAllTags(Long id, Model model) {
@@ -49,6 +55,15 @@ public class ReviewController {
 	public String showSingleTag(@RequestParam Long id, Model model) {
 		model.addAttribute("currentTag", tagRepo.findOne(id));
 		return "tagView";
+	}
+	
+	@RequestMapping("/add-comment")
+	public String addComment(String commentText, String userName, Long reviewId) {
+		Date date = new Date(); 
+		Review review = reviewRepo.findOne(reviewId);
+		Comment comment = new Comment(commentText, userName, date, review);
+		comment = commentRepo.save(comment);
+		return "redirect:/review?id" + reviewId; 
 	}
 }
 

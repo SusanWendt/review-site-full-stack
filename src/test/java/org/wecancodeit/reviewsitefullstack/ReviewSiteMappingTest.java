@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.annotation.Resource;
 
@@ -30,6 +31,9 @@ public class ReviewSiteMappingTest {
 
 	@Resource
 	private TagRepository tagRepo;
+
+	@Resource
+	private CommentRepository commentRepo;
 
 	@Test
 	public void shouldSaveAndLoadCategory() {
@@ -63,7 +67,7 @@ public class ReviewSiteMappingTest {
 	public void ShouldCallCategoryWithinReviewClass() {
 		Category categoryUnderTest = new Category("Cat Type", null, null);
 		categoryUnderTest = catRepo.save(categoryUnderTest);
-		Review reviewUnderTest = new Review("Review", "description", null, null, null, categoryUnderTest, null);
+		Review reviewUnderTest = new Review("Review", "description", null, null, null, categoryUnderTest);
 		reviewUnderTest = reviewRepo.save(reviewUnderTest);
 		long reviewIdUnderTest = reviewUnderTest.getId();
 
@@ -185,4 +189,34 @@ public class ReviewSiteMappingTest {
 		assertThat(review.getTags(), contains(tag, tag2));
 	}
 
+	@Test
+	public void shouldSaveAndLoadComment() {
+		Date date = new Date();
+		Comment commentUnderTest = new Comment("comment test", "user name test", date, null);
+		commentUnderTest = commentRepo.save(commentUnderTest);
+		long commentIdUnderTest = commentUnderTest.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		commentUnderTest = commentRepo.findOne(commentIdUnderTest);
+		assertThat(commentUnderTest.getCommentText(), is("comment test"));
+	}
+	
+	@Test 
+	public void shouldGetReviewFromComment() {
+		Date date = new Date();
+		Review review = new Review("Review", null, null, null, null, null); 
+		review = reviewRepo.save(review);
+		Comment comment = new Comment("text", "user", date, review); 
+		comment = commentRepo.save(comment);
+		long commentIdUnderTest = comment.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		comment = commentRepo.findOne(commentIdUnderTest);
+		assertThat(comment.getCommentReview(), is(review));
+		
+	}
 }
