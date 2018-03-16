@@ -1,54 +1,57 @@
-Reviews Site Full Stack Overview
+### Reviews Site Full Stack Overview
 
-Description: 
-Project done at We Can Code IT referencing previous Review Site repository. This is my first full stack and pair programming project. 
-Uses Java, Spring Boot, Spring MVC, Spring Initialzr, JPA, SQL DataBase, as wellas Front End languages HTML, and CSS. 
-Reviewing work out studios around the city with descriptions and tags all housed in a database.  
+## Description: 
+- Project done at We Can Code IT referencing previous Review Site repository. This is my first full stack and pair programming project. 
+- Uses Java, Spring Boot, Spring MVC, Spring Initialzr, JPA, SQL DataBase, as well as Front End languages HTML, and CSS. 
+- Reviewing work out studios around the city with descriptions and tags all housed in a database.  
 
-Tasks
-	[X] Add the following dependencies to build.gradle (or use Spring Initializr to create a new build.gradle)
-		[X] JPA (spring-boot-starter-data-jpa)
-		[X] H2
+## Tasks
+- [X] Add the following dependencies to build.gradle (or use Spring Initializr to create a new build.gradle)
+	- [X] JPA (spring-boot-starter-data-jpa)
+	- [X] H2
 
-	[X] Create a Category class that:
-		[X] is a JPA entity.
-		[X] contains an instance variable referencing the Reviews it contains.
-		[X] configures an appropriate JPA relationship to its reviews.
+- [X] Create a Category class that:
+	- [X] is a JPA entity.
+	- [X] contains an instance variable referencing the Reviews it contains.
+	- [X] configures an appropriate JPA relationship to its reviews.
 
-	[X] Update the Review class such that:
-		[X] it is a JPA entity.
-		[X] configures a JPA relationship to its associated category.
-		[X] allows for a description/content/body longer than 255 characters.
+- [X] Update the Review class such that:
+	- [X] it is a JPA entity.
+	- [X] configures a JPA relationship to its associated category.
+	- [X] allows for a description/content/body longer than 255 characters.
 
-	[X] Update your view (templates/html/css) such that:
-		[X] there is a page that lists review categories, each of which links to the (details) page for a specific category.
-		[X] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
-		[X] each review detail page has a link to the page for its category.
+- [X] Update your view (templates/html/css) such that:
+	- [X] there is a page that lists review categories, each of which links to the (details) page for a specific category.
+	- [X] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
+	- [X] each review detail page has a link to the page for its category.
 
 Stretch Tasks
-	[] Tags
-		[X] Create a Tag entity.
-		[X] Update Review so that it can have tags associated with it. (One review, many tags.)
-		[X] Display tags on the review details page.
-		[] Create a page that displays links to all of the reviews associated with a given tag.
+- [X] Tags
+	- [X] Create a Tag entity.
+	- [X] Update Review so that it can have tags associated with it. (One review, many tags.)
+	- [X] Display tags on the review details page.
+	- [X] Create a page that displays links to all of the reviews associated with a given tag.
 
 Stretchier
-	[] Style your tags list template as a tag cloud, making tags which appear more often larger and/or bolder and those that appear less often smaller and/or lower weight.
-	[] Allow creation and deletion of tags from a review using <form> and <button> elements along with the appropriate controller method(s).
+	- [] Style your tags list template as a tag cloud, making tags which appear more often larger and/or bolder and those that appear less often smaller and/or lower weight.
+	- [] Allow creation and deletion of tags from a review using <form> and <button> elements along with the appropriate controller method(s).
 
 Rubric
-[X/5] create and wire entity classes with proper annotations
-[X/5] create necessary repositories
-[X/10] create needed database with proper annotations
-[X/10] controller class setup to allow access to necessary templates
-[X/10] ThymeLeaf templates that accurately display required information
-[X/10] HTML semantically marked
-[X/10] CSS style according to convention
-[X/10] utilize CSS Grid layout according to conventional practice
-[X/10] utilize FlexBox according to conventional practice
-[X/10] TDD
-[X/10] style/formatting/code quality
-[X/100] total points
+
+Category|Max Score
+---|---
+create and wire entity classes with proper annotations | X/5
+create necessary repositories | X/5
+create needed database with proper annotations | X/10
+controller class setup to allow access to necessary templates | X/10
+ThymeLeaf templates that accurately display required information | X/10
+HTML semantically marked | X/10
+CSS style according to convention | X/10
+utilize CSS Grid layout according to conventional practice | X/10
+utilize FlexBox according to conventional practice | X/10
+TDD | X/10
+style/formatting/code quality | X/10
+total points | X/100
 
 Tips
 	Start with the known specifics
@@ -76,8 +79,6 @@ We are returning to your reviews application. *Surprise!*
 
 You can create a new repository or use the same one. If you'd like to use the same one, but would like to keep track of the previous version of your project, you can create a branch or use an annotated tag.
 
-[Here](./rubric.md) lies the rubric.
-
 ## Review Tags
 
 If you didn't include tags before, add them. These should have a many-to-many relationship with reviews.
@@ -103,3 +104,18 @@ How can we best semantically represent review comments from an HTML perspective?
 - Create snazzy confirmation prompts for removing tags
 - Use ES6 syntax
 - Oh, you've already thought of a few things. Do those, but keep them simple.
+
+## Rubric
+
+Category|Max Score
+---|---
+create `Tag` class and map its entity relationship with `Review` |10
+create a controller with methods that allow for manipulation of tags via AJAX |10
+create a view that lists the reviews associated with a selected tag |10
+create `Comment` class and map its entity relationship with `Review` |10
+create form and controller method(s) to allow for creation of comments |10
+update individual review page to display comments |10
+create appropriate Spring Data repositories |10
+TDD |10
+style/formatting/code quality |10
+**total points**|**100**
