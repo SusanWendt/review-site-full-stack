@@ -1,4 +1,4 @@
-### Reviews Site Full Stack Overview
+# Reviews Site Full Stack Overview
 
 ## Description: 
 - Project done at We Can Code IT referencing previous Review Site repository. This is my first full stack and pair programming project. 
@@ -58,7 +58,7 @@ total points | X/100
 
 We are returning to your reviews application. *Surprise!*
 
-![Preview](../images/reviewsfullstack.png)
+![Preview](./src/main/resources/static/images/reviewsfullstack.png)
 
 You can create a new repository or use the same one. If you'd like to use the same one, but would like to keep track of the previous version of your project, you can create a branch or use an annotated tag.
 
