@@ -33,8 +33,8 @@ Stretch Tasks
 	- [X] Create a page that displays links to all of the reviews associated with a given tag.
 
 Stretchier
-	- [] Style your tags list template as a tag cloud, making tags which appear more often larger and/or bolder and those that appear less often smaller and/or lower weight.
-	- [] Allow creation and deletion of tags from a review using <form> and <button> elements along with the appropriate controller method(s).
+- [] Style your tags list template as a tag cloud, making tags which appear more often larger and/or bolder and those that appear less often smaller and/or lower weight.
+- [] Allow creation and deletion of tags from a review using <form> and <button> elements along with the appropriate controller method(s).
 
 Rubric
 
@@ -53,29 +53,12 @@ TDD | X/10
 style/formatting/code quality | X/10
 total points | X/100
 
-Tips
-	Start with the known specifics
-		Start with mapping and displaying your Reviews. Add Categories to them after you’ve gotten that working.
 
-	Mapping out URLs, Model attributes, view template names, etc
-		It is good practice to map things out and think them through, using plural and singular names appropriately, or you’ll likely be well confused.
-		Your names, etc will be different, but hopefully this helps with some of the confusion I’ve seen around naming and what is in the model for a specific view. 
-		I’ll append model and view to names to help clarify, though we usually wouldn’t do this in the wild. Create your own table that maps these things out:
-
-
-	String fields longer than 255 characters
-		For instance variables that hold things like descriptions, which may be longer than 255 characters, 
-		you will need to indicate that this should be stored in a CLOB (Character Large OBject). To do, this use the @Lob annotation on your instance variable, like so:
-			@Lob
-			private String description;
-		
-		See LOBs, BLOBs, CLOBs and Serialization in the Java Persistence wikibook.
-		
 # Reviews, The Next Generation
 
 We are returning to your reviews application. *Surprise!*
 
-![Surprise](./photofunky.gif)
+![Preview](../images/reviewsfullstack.png)
 
 You can create a new repository or use the same one. If you'd like to use the same one, but would like to keep track of the previous version of your project, you can create a branch or use an annotated tag.
 
