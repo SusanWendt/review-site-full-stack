@@ -40,6 +40,32 @@
 					<span> </span>
 				</span>
 			</article>
+			
+			<article>
+				<h3>Leave New Comment</h3>
+				<form method="POST">
+					<div>
+						<label>Write comment: </label> <input type="text" name="commentText" />
+					</div>
+					<div>
+						<label>Enter your user name: </label> <input type="text" name="userName" />
+					</div>
+					<div>
+						<input name="reviewId" type="hidden" th:value="${review.id}" /> 
+					</div>
+					<div>
+						<button type="submit" th:formaction="@{/add-comment}">Enter</button>
+					</div>
+				</form>
+			</article>
+			<h3>Comment Section</h3>
+			<article>
+				<ul th:each="comment: ${review.comments}"> 
+					<li th:text="'Comment: ' + ${comment.commentText}" ></li>
+					<li th:text="'Date: ' + ${comment.date}"></li>
+					<li th:text="'UserName: ' + ${comment.userName}"></li>
+				 </ul>
+			</article>
 		</section>
 		
 		<footer>

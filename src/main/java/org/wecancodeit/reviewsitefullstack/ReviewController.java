@@ -63,7 +63,7 @@ public class ReviewController {
 		Review review = reviewRepo.findOne(reviewId);
 		Comment comment = new Comment(commentText, userName, date, review);
 		comment = commentRepo.save(comment);
-		return "redirect:/review?id" + reviewId; 
+		return "redirect:/review?id=" + reviewId; 
 	}
 }
 
