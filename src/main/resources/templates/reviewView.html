@@ -22,9 +22,10 @@
 			<article>
 				<h3>Description:</h3>
 				<p th:text="${review.description}"></p>
+				<img th:src="${review.imageUrl}" alt="I'm not pictured here" />
 			</article>
 			
-			<img th:src="${review.imageUrl}" alt="I'm not pictured here" />
+			
 			
 			<article>
 				<h3>Links:</h3>
@@ -32,13 +33,45 @@
 				<a th:href="${review.insta}"><h3 th:text="${review.name} + ' Instagram'"></h3></a>
 			</article>
 
-			<article>
+			<article class="tagContainer">
 				<h3>Tags:</h3>
 				<span th:each="tag: ${review.tags}">
 					<a href="/tagView" th:href="@{tag(id=${tag.id})}" 
 					th:text="${tag.tagWord}"></a>
 					<span> </span>
 				</span>
+			</article>
+			
+			<!--  <article>
+				<form>
+					<div>
+						<label>Tag:</label> <input type="text" name="addTag" />
+					</div>
+					<div>
+						<button class="addButton" type="submit" th:value="${review.id}" name="id"
+							th:formaction="@{/add-tag}">Add</button>
+					</div>
+				</form>
+			</article>  -->
+			
+			<article>
+			<h3>Change Tags:</h3>
+					<div class="tags" th:each="tag:${review.tags}">
+						<p th:text="${tag.tagWord}" />
+						<input type="hidden" name="tagId" th:value="${tag.id}" />
+						<button  class="deleteButton"  th:attr="data-del-id=${review.id},data-tag-id=${tag.id}">Delete</button>
+					</div>
+					<form>
+						<div>
+							<label>Tag:</label> <input id="tagInput" type="text" />
+						</div>
+						<div>
+							<input type="hidden" name="reviewId" th:value="${review.id}" />
+						</div>
+						<div>
+							<button class="addButton" th:attr="data-review-id=${review.id}">Add</button>
+						</div>
+					</form>
 			</article>
 			
 			<article>
@@ -58,12 +91,14 @@
 					</div>
 				</form>
 			</article>
-			<h3>Comment Section</h3>
+			
 			<article>
+				<h3>Comment Section</h3>
 				<ul th:each="comment: ${review.comments}"> 
-					<li th:text="'Comment: ' + ${comment.commentText}" ></li>
-					<li th:text="'Date: ' + ${comment.date}"></li>
-					<li th:text="'UserName: ' + ${comment.userName}"></li>
+					<li>________________________________</li>
+					<li><p th:text="${comment.commentText}" ></p>
+					<p th:text="'Date: ' + ${comment.date}"></p>
+					<p th:text="'UserName: ' + ${comment.userName}"></p></li>
 				 </ul>
 			</article>
 		</section>
@@ -76,8 +111,6 @@
 		</footer>
 	
 	</div> <!-- /.container -->
-
-	
-	
+	<script src="./js/tags.js"></script>
 </body>
 </html>

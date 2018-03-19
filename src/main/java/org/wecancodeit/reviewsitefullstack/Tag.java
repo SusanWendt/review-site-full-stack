@@ -14,37 +14,36 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	private long id;
-	
 	private String tagWord;
-		
-	@ManyToMany (mappedBy="tags")
+
+	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
-	
-	public Tag() {
-	}
-
-	public Tag(String tagWord, Review...reviews) {
-		this.tagWord=tagWord;
-		this.reviews= new HashSet<>(Arrays.asList(reviews));
-	}
-	
-	public long getId() {
-		return id;
-	}
-
-	public String getTagWord() {
-		return tagWord;
-	}
 	
 	public Collection<Review> getReviews() {
 		return reviews;
 	}
 	
-	@Override
-	public int hashCode() {
-		return((Long) id).hashCode();
+	public long getId() {
+		return id;
 	}
 	
+	public String getTagWord() {
+		return tagWord;
+	}
+
+	public Tag(String tagWord, Review... reviews) {
+		this.tagWord = tagWord;
+		this.reviews = new HashSet<>(Arrays.asList(reviews));
+	}
+	
+	public Tag() {
+	}
+
+	@Override
+	public int hashCode() {
+		return ((Long) id).hashCode();
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -53,7 +52,15 @@ public class Tag {
 		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
-		return id == ((Tag) obj).id;	
+		return id == ((Tag) obj).id;
+	}
+
+	public void addReview(Review review) {
+		reviews.add(review);
+	}
+
+	public void delReview(Review review) {
+		reviews.remove(review);
 	}
 
 }

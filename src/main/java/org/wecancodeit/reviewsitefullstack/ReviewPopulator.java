@@ -38,7 +38,7 @@ public class ReviewPopulator implements CommandLineRunner {
 		Tag highCost = new Tag("High Cost");
 		highCost = tagRepo.save(highCost);
 
-		Tag lowCost = new Tag("lowCost");
+		Tag lowCost = new Tag("Low Cost");
 		lowCost = tagRepo.save(lowCost);
 
 		Tag hiit = new Tag("High Intensity Interval Training");

@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Review {
 
@@ -32,14 +34,14 @@ public class Review {
 
 	@ManyToMany
 	private Collection<Tag> tags;
-	
-	@OneToMany(mappedBy="review")
+
+	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
-	
+
 	public Collection<Comment> getComments() {
-		return comments; 
+		return comments;
 	}
-	
+
 	public Review() {
 	}
 
@@ -86,7 +88,20 @@ public class Review {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
-
+	
+	//to check if tagId already exists with review
+	public Boolean tagExists(long tagId) {
+		boolean tagExists = false;
+		for (Tag tag : tags) {
+			if (tag.getId() == tagId) {
+				tagExists = true;
+				break;
+			}
+		}
+		return tagExists;
+	}
+	//end of tagId checking if already exists
+	
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
@@ -101,6 +116,14 @@ public class Review {
 			return false;
 		}
 		return id == ((Review) obj).id;
+	}
+
+	public void addTag(Tag tag) {
+		tags.add(tag);
+	}
+
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
 	}
 
 }
