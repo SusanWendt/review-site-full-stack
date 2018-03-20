@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TagRepository extends CrudRepository<Tag, Long>{
 
-	public Tag findByTagWord(String tagWord);
-
+	public Tag findByTagWordIgnoreCase(String tagWord);
+	//TODO fix refactor in Rest Controller
 }

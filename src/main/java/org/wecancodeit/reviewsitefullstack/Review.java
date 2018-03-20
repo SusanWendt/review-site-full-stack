@@ -20,18 +20,18 @@ public class Review {
 
 	@Id
 	@GeneratedValue
-	private long id; // the annotations above apply directly to what follows so @Id and @Generated
-						// value are applied to private long and not private string field
-
+	private long id; 
 	private String name;
 	private String description;
 	private String imageUrl;
 	private String website;
 	private String insta;
 
+	@JsonIgnore 
 	@ManyToOne
 	private Category category;
 
+	@JsonIgnore
 	@ManyToMany
 	private Collection<Tag> tags;
 
@@ -90,17 +90,20 @@ public class Review {
 	}
 	
 	//to check if tagId already exists with review
-	public Boolean tagExists(long tagId) {
-		boolean tagExists = false;
-		for (Tag tag : tags) {
-			if (tag.getId() == tagId) {
-				tagExists = true;
-				break;
-			}
+	public String addTag(Tag tag) {
+		if (!(tags.contains(tag))) {
+			tags.add(tag);
+			return "added"; 
+		} else {
+			return "duplicate";
 		}
-		return tagExists;
 	}
 	//end of tagId checking if already exists
+
+	//delete tag method
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
+	}
 	
 	@Override
 	public int hashCode() {
@@ -117,13 +120,6 @@ public class Review {
 		}
 		return id == ((Review) obj).id;
 	}
-
-	public void addTag(Tag tag) {
-		tags.add(tag);
-	}
-
-	public void removeTag(Tag tag) {
-		tags.remove(tag);
-	}
+	
 
 }

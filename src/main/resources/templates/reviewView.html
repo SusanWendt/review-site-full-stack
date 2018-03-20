@@ -4,8 +4,8 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<link rel="stylesheet" href="./css/style.css" />
-	<link rel="stylesheet" href="./css/layout.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/layout.css" />
 	<link href="https://fonts.googleapis.com/css?family=Arimo|Pacifico" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Alice|Sacramento" rel="stylesheet" />
 	<title>Review</title>
@@ -14,8 +14,13 @@
 <body>
 	<div class="container">	
 		<header>
-			<img id="logo" src="./images/swlogo.png" alt = "no image found" /> 
+			<img id="logo" src="/images/swlogo.png" alt = "no image found" /> 
 			<h1 class = "headertext" th:text="${review.name} + ' Review'"></h1>
+			
+			<!-- may need to change line below -->
+			<input type="hidden" id="review-id" th:value="${review.id}" />  
+			<!-- susie, please check line above -->
+			
 		</header>
 
 		<section class="reviewInfo">
@@ -36,25 +41,27 @@
 			<article class="tagContainer">
 				<h3>Tags:</h3>
 				<span th:each="tag: ${review.tags}">
-					<a href="/tagView" th:href="@{tag(id=${tag.id})}" 
+					<a href="/tagView" th:href="@{'/tag/' + ${tag.id}}" 
 					th:text="${tag.tagWord}"></a>
-					<span> </span>
+					<a class="tag-delete-x">x</a>
+					<input type="hidden" th:value="${tag.id}" />
 				</span>
 			</article>
 			
-			<!--  <article>
-				<form>
+			<article class="tag-input-form">
+				<h3>Add Tag: </h3>
+				<form method="POST">
 					<div>
-						<label>Tag:</label> <input type="text" name="addTag" />
+						<label>Tag:</label> <input type="text" id="tagWord" required="true" />
 					</div>
 					<div>
-						<button class="addButton" type="submit" th:value="${review.id}" name="id"
-							th:formaction="@{/add-tag}">Add</button>
+						<input type="button" class="tag-add-button" value="Submit" ></input>
 					</div>
 				</form>
-			</article>  -->
+			</article>
 			
-			<article>
+			<!-- Old submit form -->
+			<!-- <article>
 			<h3>Change Tags:</h3>
 					<div class="tags" th:each="tag:${review.tags}">
 						<p th:text="${tag.tagWord}" />
@@ -72,7 +79,7 @@
 							<button class="addButton" th:attr="data-review-id=${review.id}">Add</button>
 						</div>
 					</form>
-			</article>
+			</article> -->
 			
 			<article>
 				<h3>Leave New Comment</h3>
@@ -87,7 +94,7 @@
 						<input name="reviewId" type="hidden" th:value="${review.id}" /> 
 					</div>
 					<div>
-						<button type="submit" th:formaction="@{/add-comment}">Enter</button>
+						<button type="submit" th:formaction="@{/addcomment}">Enter</button>
 					</div>
 				</form>
 			</article>
@@ -105,12 +112,12 @@
 		
 		<footer>
 			<span class="Copyright">&copy;2018 Susan Wendt</span>
-			<p><a th:href= "@{category(id=${review.category.id})}"
+			<p><a th:href= "@{'/category/' + ${review.category.id}}"
 			th:text= "'Return to ' + ${review.category.type} + ' Category'"></a></p>
 			<p><a href="/categories">Back to Home</a></p>
 		</footer>
 	
 	</div> <!-- /.container -->
-	<script src="./js/tags.js"></script>
+	<script src="/js/tags.js"></script>
 </body>
 </html>

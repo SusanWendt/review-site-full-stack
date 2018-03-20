@@ -4,45 +4,44 @@ import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/review")
 public class ReviewRestController {
-	
-	@Resource 
+
+	@Resource
 	ReviewRepository reviewRepo;
-	
-	@Resource 
+
+	@Resource
 	TagRepository tagRepo;
-	
-	@RequestMapping("/add-tag")
-	public Review addTagToThisReview(Long reviewId, String addTag) {
+
+	@RequestMapping("/review/{reviewId}/addtag/{tagWord}")
+	public Tag addTagToReview(@PathVariable Long reviewId, @PathVariable String tagWord) {
 		Review thisReview = reviewRepo.findOne(reviewId);
-		if (tagRepo.findByTagWord(addTag)!=null) {
-			Tag tag = tagRepo.findByTagWord(addTag);
-			tag.addReview(thisReview);
-			return thisReview;
-			
+		Tag tag = tagRepo.findByTagWordIgnoreCase(tagWord);
+
+		if (tag == null) {
+			tag = new Tag(tagWord);
+			tagRepo.save(tag);
 		}
-		
-		Tag tag = new Tag(addTag);
-		tagRepo.save(tag);
-		tag.addReview(thisReview);
-		tagRepo.save(tag);
-		
-		return thisReview; 
-	}	
-	
-	@RequestMapping("/del-tag")
-	public Review DeleteTagFromThisReview(Long reviewId, Long tagId){
+		String result = thisReview.addTag(tag);
+		reviewRepo.save(thisReview);
+		if (result.equals("added")) {
+			return tag;
+		} else {
+			return null;
+		}
+	}
+
+	@RequestMapping("/review/{reviewId}/tag/{tagWord}/deletetag")
+	public String deleteTagFromReview(@PathVariable Long reviewId, @PathVariable Long tagId) {
 		Review thisReview = reviewRepo.findOne(reviewId);
 		Tag thisTag = tagRepo.findOne(tagId);
-		thisTag.delReview(thisReview);
-		tagRepo.save(thisTag);
-		
-		
-		return thisReview;
-	}	
+		thisReview.removeTag(thisTag);
+		reviewRepo.save(thisReview);
+		if (thisTag.getReviews().size() == 0) {
+			tagRepo.delete(thisTag);
+		}
+		return null;
+	}
 }

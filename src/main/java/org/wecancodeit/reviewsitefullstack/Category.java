@@ -7,14 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Category {
 
 	@Id
 	@GeneratedValue
-	private long id; //the annotations above apply directly to what follows so @Id and @Generated value are applied to private long and not private string field 
+	private long id; 
 	private String type;
 	private String imageUrl;
 	private String description;
@@ -44,7 +42,6 @@ public class Category {
 		return id;
 	}
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews; 
 	

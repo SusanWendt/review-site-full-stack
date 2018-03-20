@@ -12,12 +12,12 @@
 <body>
 	<div class="container">	
 		<header>
-			<img id="logo" src="./images/swlogo.png" alt = "no image found" /> 
+			<img id="logo" src="/images/swlogo.png" alt = "no image found" /> 
 			<h1 class = "headertext">List of Review Categories</h1>
 		</header>
 		<section class="categoriesList">
 				<ul th:each= "category : ${categories}">
-					<li><a th:href= "@{category(id=${category.id})}"
+					<li><a th:href= "@{'/category/' + ${category.id}}"
 					th:text= "${category.type}"></a></li>
 				</ul>
 
