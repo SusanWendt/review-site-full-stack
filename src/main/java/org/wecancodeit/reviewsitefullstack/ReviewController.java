@@ -58,12 +58,16 @@ public class ReviewController {
 		return "tagView";
 	}
 
-	@RequestMapping("/review/{reviewId}/addcomment")
-	public String addComment(String commentText, String userName, @PathVariable Long reviewId) {
+	@RequestMapping("/review/{id}/addcomment")
+	public String addComment(@PathVariable Long id, String commentText, String userName) {
+		Review currentReview = reviewRepo.findOne(id);
+		if (userName.equals("")) {
+			userName += "Anonymous";
+		}
 		Date date = new Date();
-		Review review = reviewRepo.findOne(reviewId);
-		Comment comment = new Comment(commentText, userName, date, review);
-		comment = commentRepo.save(comment);
-		return "redirect:/review/{reviewId}";
+		Comment comment = new Comment(commentText, userName, date, currentReview);
+		commentRepo.save(comment);
+		reviewRepo.save(currentReview); 
+		return "redirect:/review/{id}";
 	}
 }

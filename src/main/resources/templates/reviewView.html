@@ -94,7 +94,7 @@
 						<input name="reviewId" type="hidden" th:value="${review.id}" /> 
 					</div>
 					<div>
-						<button type="submit" th:formaction="@{/addcomment}">Enter</button>
+						<input class="comment-add-button" th:formaction="@{'/review/' + ${review.id} + '/addcomment'}" type="submit" value="Post Comment"></input>
 					</div>
 				</form>
 			</article>
