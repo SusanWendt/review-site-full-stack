@@ -15,7 +15,7 @@ function addTagDeleteListener(element) {
 		
 		if (response) {
 			const currentTagId = element.nextElementSibling.value
-			const deleteRequestUrl = `/review/${reviewId}/tag/${tagId}/deletetag`
+			const deleteRequestUrl = `/review/${reviewId}/tag/${currentTagId}/deletetag`
 
 			xhr.open('DELETE', deleteRequestUrl, true)
 			xhr.send()
@@ -53,7 +53,7 @@ tagAddButton.addEventListener('click', function() {
 				const newTag = document.createElement('span')
 				newTag.classList.add('review-tag')
 				newTag.innerHTML = `
-					<a href="/tag/${res.id}">${res.name}</a>
+					<a href="/tag/${res.id}">${res.tagWord}</a>
 					<a class="tag-delete-x"> x</a>
 					<input type="hidden" value="${res.id}" />`
 				const tagList = document.querySelector('.tagContainer')
