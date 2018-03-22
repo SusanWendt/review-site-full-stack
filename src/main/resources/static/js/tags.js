@@ -4,7 +4,6 @@ const reviewIdElement = document.querySelector('#review-id')
 const reviewId = reviewIdElement.value
 
 //delete tag
-
 const tagDeleteButtonList = document.querySelectorAll('.tag-delete-x')
 tagDeleteButtonList.forEach(function(xButton){
 	addTagDeleteListener(xButton)
@@ -34,8 +33,8 @@ function addTagDeleteListener(element) {
 
 const tagAddButton = document.querySelector('.tag-add-button')
 tagAddButton.addEventListener('click', function() {
-	const tagNameBox = document.querySelector('#tagWord')
-	const tagName = tagWordBox.value
+	const tagWordBox = document.querySelector('#tagWord')
+	const tagWord = tagWordBox.value
 
 	if (tagWord) {
 		tagWordBox.value = ''

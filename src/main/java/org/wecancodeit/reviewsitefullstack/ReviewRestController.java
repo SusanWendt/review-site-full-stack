@@ -33,7 +33,7 @@ public class ReviewRestController {
 		}
 	}
 
-	@RequestMapping("/review/{reviewId}/tag/{tagWord}/deletetag")
+	@RequestMapping("/review/{reviewId}/tag/{tagId}/deletetag")
 	public String deleteTagFromReview(@PathVariable Long reviewId, @PathVariable Long tagId) {
 		Review thisReview = reviewRepo.findOne(reviewId);
 		Tag thisTag = tagRepo.findOne(tagId);
